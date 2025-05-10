@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Mark Analyzer Concepts</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            text-align: center;
+            margin:auto;
+            font-size:20px;
+             background-image:url("student.jfif");
+             background-repeat: no-repeat;
+             background-size: cover;
+             color:white;
+             margin-top: 100px;
+        }
+        button{
+            background-color: orangered;
+            padding:20px;
+        }
+        button:hover{
+            background-color: green;
+            box-shadow: 3px 3px 3px white;
+        }
+       h1{
+        color:white;
+       }
+       input{
+        height:40px;
+        width:200px;
+        border-radius: 20px;
+        border:1px solid black;
+        font-size: large;
+        margin-top: 20px;;
+       }
+        button{
+            background-color: orangered;
+            padding:20px;
+            border-radius: 20px;
+            border:none;
+        }
+        button:hover{
+            background-color: green;
+            box-shadow: 3px 3px 3px white;
+        }
+      input::placeholder{
+        padding-left:10px;
+      }
+    </style>
+</head>
+<body>
+    <div class="main"><h1>Student Mark Analyzer Concepts</h1>
+        <div class="input">
+            Enter the Mark 1(Tamil):
+            <input type="text" placeholder="Enter the mark1 : " id="mark1"><br><br>
+            <p id="m1" id="m"></p>
+            Enter the Mark 2(English):
+            <input type="text" placeholder="Enter the mark2 : "id="mark2"><br><br>
+            <p id="m2"id="m"></p>
+            Enter the Mark 3(Maths):
+            <input type="text" placeholder="Enter the mark3 : "id="mark3"><br><br>
+            <p id="m3"id="m"></p>
+            Enter the Mark 4(Science):
+            <input type="text" placeholder="Enter the mark4 : "id="mark4"><br><br>
+            <p id="m4"id="m"></p>
+            Enter the Mark 5(social):
+            <input type="text" placeholder="Enter the mark5 : "id="mark5"><br><br>
+            <p id="m5"id="m"></p>
+
+            <button onclick="calculate()">Click</button>
+    <div class="output">
+        <h1 id="fill"></h1>
+        <h1 id="out2"></h1>
+       <h1 id="out"></h1>
+       <h1 id="out1"></h1>
+       <h1 id="passfail"></h1>
+    </div>
+    </div>
+    </div>
+    <script>
+       function calculate(){
+        var array=[];
+        let total=0;
+        let count=0;
+        for(var i=1;i<=5;i++){
+                        
+            let mark=Number(document.getElementById("mark"+i).value)
+            if(mark<=100){
+            array.push(mark);   
+            total+=mark;
+            console.log(mark);  
+            if(mark<35){
+                document.getElementById("m"+i).innerHTML= "you are failed in  this Subject";
+                 document.getElementById("m"+i).style.color= "red";
+            }
+            else{
+                document.getElementById("m"+i).innerHTML= "";
+            }
+        }
+            else{
+            document.getElementById("m"+i).innerHTML= "Enter the valid Mark";
+            document.getElementById("m"+i).style.color= "red";
+            }             
+           
+        }     
+        document.getElementById("out2").innerHTML= "Marks are: " +array; 
+         document.getElementById("out").innerText= "Total : " +total;
+        var average=total/5;
+          document.getElementById("out1").innerHTML= "Average : " +average;
+          for(var i=0;i<array.length;i++){
+             if(array[i]>35){
+           document.getElementById("passfail").innerHTML= "PASS ";
+            document.getElementById("passfail").style.color= "Green";
+        }
+        else{
+             document.getElementById("passfail").innerHTML= "Fail";
+            document.getElementById("passfail").style.color= "red";
+            break;
+        }
+        }
+        
+    }
+
+
+
+    </script>
+    </body>
+</html>
